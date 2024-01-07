@@ -73,8 +73,8 @@ def searchresult(request):
 
     field = request.GET.get('field')
     data = request.GET.get('data')
-    print(field, "fieldddddddd")
-    print(data,"ddddddddddddddddata")
+    print(field)
+    print(data)
 
     if field:
         dropdown_values = MetaData.objects.filter(**{f"{field}__isnull": False}).values_list(field, flat=True)
@@ -87,7 +87,7 @@ def searchresult(request):
                 dropdown_values_lower.append(value.lower())
 
         dropdown_values_unique = set(dropdown_values_lower)
-        print(dropdown_values_unique, "unique valueeeeeeeeees")
+        print(dropdown_values_unique)
 
         return JsonResponse({"dropdown_values": list(dropdown_values_unique)})
 
